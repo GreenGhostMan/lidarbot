@@ -5,7 +5,7 @@
 
   <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keybord">  </node>
 
-  <include file="$(find ydlidar_ros)/launch/lidar.launch"/>
+  <include file="$(find rplidar_ros)/launch/rplidar.launch"/>
 
   <include file="$(find hector_slam_launch)/launch/tutorial.launch"/>
 

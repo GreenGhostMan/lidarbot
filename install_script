@@ -1,0 +1,30 @@
+#!/bin/bash
+sudo apt update
+
+
+sudo systemctl stop magni-base.service
+sudo systemctl disable magni-base.service
+rm -rf /home/ubuntu/catkin_ws/build /home/ubuntu/catkin_ws/devel
+rm -rf /home/ubuntu/catkin_ws/src/*
+cd /home/ubuntu/catkin_ws/src/
+catkin_init_workspace
+cd ..
+catkin_make
+cd src
+git clone https://github.com/Slamtec/rplidar_ros.git
+git clone -b indigo-devel https://github.com/ros-drivers/rosserial.git
+git clone https://github.com/tu-darmstadt-ros-pkg/hector_slam
+git clone -b lidarbot_v2 https://github.com/yoraish/lidar_bot 
+
+cd ..
+rosdep install --from-paths src --ignore-src -r -y
+catkin_make
+
+
+
+
+
+# install real-vnc-server from deb
+vncserver
+
+# 1 open lidar and check tf base_link -> laser ( base_fooprint->laser_frame )
