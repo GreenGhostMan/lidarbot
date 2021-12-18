@@ -9,13 +9,7 @@
 	<!-- Run the map server --> 
     <node name="map_server" pkg="map_server" type="map_server" args="$(find lidarbot)/maps/sithu.yaml"/>
 
-
-
-	<!-- 
-		HECTOR STUFF. 
-	-->
-
-  <arg name="tf_map_scanmatch_transform_frame_name" default="scanmatcher_frame"/>
+    <arg name="tf_map_scanmatch_transform_frame_name" default="scanmatcher_frame"/>
   <arg name="base_frame" default="base_link"/>
   <arg name="odom_frame" default="odom"/><!--not sure-->
   <!-- Change below!! Used to be true. -->
@@ -70,8 +64,7 @@
     <param name="tf_map_scanmatch_transform_frame_name" value="$(arg tf_map_scanmatch_transform_frame_name)" />
   </node>
     
-
-	<!-- 
+    	<!-- 
 		AMCL stuff.
 	 -->
 	<node pkg="amcl" type="amcl" name="amcl">
@@ -112,7 +105,8 @@
 	    <param name="recovery_alpha_fast" value="0.0"/>
 	  </node> 
 
-<!-- MOVEMENT -->
+
+ <!-- MOVEMENT -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <rosparam file="$(find lidarbot)/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
     <rosparam file="$(find lidarbot)/costmap_common_params.yaml" command="load" ns="local_costmap" />
@@ -125,5 +119,10 @@
 	<!-- Run odom transformer. Credit goes to https://github.com/ne0h/hmmwv/blob/master/ros_workspace/src/hmmwv/launch/odomtransformer.launch -->
     <include file="$(find lidarbot)/launch/odomtransformer.launch"/>
     
-</launch>
 
+
+
+
+
+
+</launch>
